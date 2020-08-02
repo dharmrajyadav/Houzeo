@@ -287,7 +287,7 @@ function getCityLocation(dataAddress) {
                         }    
                         $("#addressUpdate").append(dataAppend);
 
-                        $( "td" ).click(function(){
+                        $( "td" ).click(function(){                          
                           var serviceID = $(this).attr('id');
                           $('#addressUpdate').hide();
                           $('#successImage').show();
