@@ -124,33 +124,19 @@ img
       <div class="col-sm-2 property_type" >
       <div><img src="images/multi_family.png" alt="Girl in a jacket" ></div>
             <div class="radio">
-               <label><input type="radio" name="optradio" id="Multi" value="multi_family" class="radio_style" style="position: relative;
-    left: 3px;
-    top: 19px;"><a style="position: relative;
-    top: 20px;
-    left: 40px;">Multi-Family</a></label>
+               <label><input type="radio" name="optradio" id="Multi" value="multi_family" class="radio_style" style="position: relative;left: 3px;top: 19px;"><a style="position: relative; top: 20px;left: 40px;">Multi-Family</a></label>
             </div>
       </div>
       <div class="col-sm-2 property_type" >
       <div><img src="images/location.jpg" alt="Girl in a jacket" ></div>
             <div class="radio">
-               <label><input type="radio" name="optradio" id="Land" value="land/lot" class="radio_style" style="position: relative;
-    left: 31px;
-    top: 4px;"><a style="position: relative;
-    top: 4px;
-    left: 64px;;">Land/Lot</a></label>
+               <label><input type="radio" name="optradio" id="Land" value="land/lot" class="radio_style" style="position: relative;left: 31px;top: 4px;"><a style="position: relative;top: 4px; left: 64px;;">Land/Lot</a></label>
             </div>
       </div>
       <div class="col-sm-2 property_type" >
-      <div><img src="images/building_other.png" alt="Girl in a jacket" style="position: relative;
-    top: 40px;"></div>
+      <div><img src="images/building_other.png" alt="Girl in a jacket" style="position: relative;top: 40px;"></div>
             <div class="radio">
-               <label><input type="radio" name="optradio" id="other" value="Other" class="radio_style" style="position: relative;
-    left: 54px;
-    top: 74px;" ><a style="    position: relative;
-    left: 73px;
-    top: 65px;
-">Other</a></label>
+               <label><input type="radio" name="optradio" id="other" value="Other" class="radio_style" style="position: relative;left: 54px;top: 74px;" ><a style=" position: relative;left: 73px;top: 65px;">Other</a></label>
             </div>
       </div>
      
