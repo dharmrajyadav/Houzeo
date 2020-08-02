@@ -24,5 +24,6 @@ Route::get('/map', function () {
 
 
 Route::post('/getOnChange','ApiController@getData');
+Route::get('/test','ApiController@test');
 
 

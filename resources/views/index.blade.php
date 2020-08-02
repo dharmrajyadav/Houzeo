@@ -144,6 +144,12 @@ $(document).ready(function () {
     var map = new google.maps.Map(document.getElementById("mapLocation"),mapOptions);
   });
 
+
+
+
+
+
+
   $(document).ready(function () {
     $("#address").on("change keyup paste", function(){
           var addressData = $('#address').val();
@@ -154,17 +160,35 @@ $(document).ready(function () {
                     });
           $.ajax({
                 type:'post',
-                url: "{{ url('getOnChange')}}",  
+                url: "{{ url('getOnChange')}}",
+                dataType: "json",  
                 data:{addressData:addressData},
                 success:function(data) 
                   {
                       var jsonData = JSON.parse(data);
-                      console.log(jsonData);
-                         
+                      var dataLength = jsonData.suggestions.length;
+                      var dataAppend = '';
+                      for(var i = 0 ;i<dataLength ; i++)
+                        {
+                          dataAppend+=jsonData.suggestions[i].text;
+                        }    
+                        var countries =[dataAppend];
+                        console.log(countries);
+                        
+                     
                    }
           });  
             });
   });
+
+
+
+
+
+
+
+
+
 </script>
 
 
