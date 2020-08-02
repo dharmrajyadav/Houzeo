@@ -18,3 +18,11 @@ Route::get('/', function () {
 });
 
 
+Route::get('/map', function () {
+    return view('map');
+});
+
+
+Route::post('/getOnChange','ApiController@getData');
+
+

@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Houzeo-Api</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
   <style>
 
         .property_type
         {
             height: 250px;
             margin: 15px;
-            background-color: #9e9e9e57;
+            background-color: #9e9e9e33;
+            border-radius: 10px;
         }
         .headings
         {
@@ -43,10 +46,10 @@
     </div>
     <br>
     
-    <div class="row" id="mapLocation" name="mapLocation" hidden>
-      <div class="col-sm-4" style="background-color:yellow;">33.33%</div>
-      <div class="col-sm-4" style="background-color:orange;">33.33%</div>
-      <div class="col-sm-4" style="background-color:yellow;">33.33%</div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8" id="mapLocation" name="mapLocation" style="height: 250px;"></div>
+      <div class="col-sm-2"></div>
     </div>
     <br>
 
@@ -125,6 +128,45 @@
     </div>
   </div>
 </div>
+
+
+  <script type="text/javascript"
+        src="http://maps.googleapis.com/maps/api/js?libraries=geometry&sensor=false&key=AIzaSyD71a_ebz0eq1U9Vj4muX_nHZw4fegUVo4">
+</script>
+
+  <script>
+$(document).ready(function () {
+  var mapOptions = {
+      center: new google.maps.LatLng(-34.397, 150.644),
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("mapLocation"),mapOptions);
+  });
+
+  $(document).ready(function () {
+    $("#address").on("change keyup paste", function(){
+          var addressData = $('#address').val();
+          $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                    });
+          $.ajax({
+                type:'post',
+                url: "{{ url('getOnChange')}}",  
+                data:{addressData:addressData},
+                success:function(data) 
+                  {
+                      var jsonData = JSON.parse(data);
+                      console.log(jsonData);
+                         
+                   }
+          });  
+            });
+  });
+</script>
+
 
 </body>
 </html>
