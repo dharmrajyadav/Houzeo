@@ -281,7 +281,7 @@ function getCityLocation(dataAddress) {
                       var dataAppend = '';
                       $("#addressUpdate").empty();
                       $('#addressUpdate').show();
-                      for(var i = 1 ; i <= dataLength-1 ; i++)
+                      for(var i = 0 ; i <= dataLength-1 ; i++)
                         {
                           dataAppend+='<tr class="rowData"><td id="'+[i]+'">'+jsonData.suggestions[i].text+'</td></tr>';
                         }    
