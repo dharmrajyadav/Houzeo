@@ -98,7 +98,7 @@ img
     
     <div class="row">
       <div class="col-sm-3"></div>
-      <div class="col-sm-6 headings">And what's your property address?</div>
+      <div class="col-sm-6 headings">And what's your property type?</div>
       <div class="col-sm-3"></div>
     </div>
     <br>
@@ -213,7 +213,7 @@ $(document).ready(function () {
 
 
 
-  function getCityLocation(dataAddress) {
+function getCityLocation(dataAddress) {
 
           if(map == undefined){
 
