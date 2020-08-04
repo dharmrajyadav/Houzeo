@@ -216,7 +216,6 @@ $(document).ready(function () {
 function getCityLocation(dataAddress) {
 
           if(map == undefined){
-
             var mapOptions = {
               center: new google.maps.LatLng(19.0760, 72.8777),
               zoom: 8,
@@ -245,9 +244,7 @@ function getCityLocation(dataAddress) {
  
 
  function addressesBounds(total_addresses, address_count, myLatLng) {
-
               markerBounds.push(myLatLng);
-
               // make sure you only run this function when all addresses have been geocoded
               if (total_addresses == address_count) {
                   var latlngbounds = new google.maps.LatLngBounds();
@@ -307,18 +304,6 @@ function getCityLocation(dataAddress) {
                             var state = jsonData.suggestions[serviceID].state;
                             var zip = jsonData.suggestions[serviceID].street_line;
                             var property_type = $('input[name="optradio"]:checked').val();
-                           
-
-                            $.ajax({
-                              type:'post',
-                              url: "{{ url('userData')}}",
-                              data:{address:address,city:city,state:state,zip:zip,property_type:property_type}, 
-                              success: function(result){
-                                         
-                                         console.log(result);
-                                          }});
-
-
 
 
                         });
@@ -328,18 +313,31 @@ function getCityLocation(dataAddress) {
                  
             });
 
-//             $(document).ready(function(){
-//   $("button").click(function(){
-//     $.ajax({url: "demo_test.txt", success: function(result){
-//       $("#div1").html(result);
-//     }});
-//   });
-// });
-           
+              $('input:radio').click(function()
+              {
+                var address = $('#address').val();
+                var city = $('#city').val();
+                var state = $('#state').val();
+                var zip = $('#zip').val();
+                var property_type = $('input[name="optradio"]:checked').val();
+                $.ajax({
+                              type:'post',
+                              url: "{{ url('userData')}}",
+                              data:{address:address,city:city,state:state,zip:zip,property_type:property_type}, 
+                              success: function(result){
+                                         
+                                var jsonData = JSON.parse(result);
+                                var dataLength =jsonData.length;
+                                var dataAppend = '';
+                                for(var i = 0;i < dataLength ; i++)
+                                {
+                                    dataAppend+='<tr><td>'+jsonData[i].Sr+'</td><td>'+jsonData[i].Street_Address+'</td><td>'+jsonData[i].City+'</td><td>'+jsonData[i].State+'</td><td>'+jsonData[i].Zip+'</td><td>'+jsonData[i].County_by_SA+'</td><td>'+jsonData[i].County_by_GA+'</td></tr>';
+                                  }    
+                                  $("#userdetails").append(dataAppend);
 
-
-           
-
+                                          }});
+                   
+              });
 
 
 

@@ -37,12 +37,15 @@ class ApiController extends Controller
                 $userModel->County_by_SA = $request->city;
                 $userModel->County_by_GA = $request->city;
                 $userModel->save();
+
+                $users = DB::table('userdetails')->latest()->get();
+                return json_encode($users);
         }
 
         
                 public function UserfetchData()
                 {
-                        $users = DB::table('userdetails')->get();
+                        $users = DB::table('userdetails')->latest()->get();
                         return json_encode($users);
                        
                 }
