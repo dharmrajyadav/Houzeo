@@ -109,7 +109,7 @@ img
       <div class="col-sm-2 property_type" >
          <div><img src="images/single_family.png" alt="Girl in a jacket" ></div>
              <div class="radio">
-                 <label><input type="radio" name="optradio" id="Single" value="single_family" class="radio_style" checked><br><a style="position: relative;
+                 <label><input type="radio" name="optradio" id="Single" value="single_family" class="radio_style"><br><a style="position: relative;
     left: 43px;">Single Family</a></label>
              </div>
       </div>
@@ -193,21 +193,21 @@ $(document).ready(function () {
   $("#mapLocation").hide();
   $('#successImage').hide();
 
-  $.ajax({
-    url: "{{ url('UserfetchData')}}",
-    success: function(result)
-    {
-      var jsonData = JSON.parse(result);
-      var dataLength =jsonData.length;
-      var dataAppend = '';
-      for(var i = 0;i < dataLength ; i++)
-      {
-          dataAppend+='<tr><td>'+jsonData[i].Sr+'</td><td>'+jsonData[i].Street_Address+'</td><td>'+jsonData[i].City+'</td><td>'+jsonData[i].State+'</td><td>'+jsonData[i].Zip+'</td><td>'+jsonData[i].County_by_SA+'</td><td>'+jsonData[i].County_by_GA+'</td></tr>';
-       }    
-        $("#userdetails").append(dataAppend);
+  // $.ajax({
+  //   url: "{{ url('UserfetchData')}}",
+  //   success: function(result)
+  //   {
+  //     var jsonData = JSON.parse(result);
+  //     var dataLength =jsonData.length;
+  //     var dataAppend = '';
+  //     for(var i = 0;i < dataLength ; i++)
+  //     {
+  //         dataAppend+='<tr><td>'+jsonData[i].Sr+'</td><td>'+jsonData[i].Street_Address+'</td><td>'+jsonData[i].City+'</td><td>'+jsonData[i].State+'</td><td>'+jsonData[i].Zip+'</td><td>'+jsonData[i].County_by_SA+'</td><td>'+jsonData[i].County_by_GA+'</td></tr>';
+  //      }    
+  //       $("#userdetails").append(dataAppend);
 
 
-    }});
+  //   }});
 
 });
 
@@ -226,7 +226,11 @@ function getCityLocation(dataAddress) {
           }
 
           geocoder = new google.maps.Geocoder();
+          
+          
           geocoder.geocode( { 'address': dataAddress}, function(results, status) {
+            
+            
                      
                 if (status == google.maps.GeocoderStatus.OK) {
                   var marker = new google.maps.Marker({
@@ -234,6 +238,8 @@ function getCityLocation(dataAddress) {
                       position: results[0].geometry.location
                 });
                 }
+                
+                
                 var myLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());                      
                     addressesBounds(0, 0, myLatLng); 
         });
