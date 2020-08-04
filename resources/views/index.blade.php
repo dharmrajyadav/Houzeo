@@ -146,12 +146,12 @@ img
           <tr>
             <th>Sr</th>
             <th>Property Type</th>
-            <th>Street_Address</th>
+            <th>Street Address</th>
             <th>City</th>
             <th>State</th>
             <th>Zip</th>
-            <th>County_by_GA</th>
-            <th>County_by_SA</th>
+            <th>County by GA</th>
+            <th>County by SA</th>
             
           </tr>
           </thead>
