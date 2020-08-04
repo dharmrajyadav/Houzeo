@@ -34,8 +34,8 @@ class ApiController extends Controller
                 $userModel->State = $request->state;
                 $userModel->Zip = $request->zip;
                 $userModel->Property_Type = $request->property_type;
-                $userModel->County_by_SA = $request->city;
-                $userModel->County_by_GA = $request->city;
+                $userModel->County_by_SA = $request->County_by_GA;
+                $userModel->County_by_GA = $request->County_by_GA;
                 $userModel->save();
 
                 $users = DB::table('userdetails')->latest()->get();

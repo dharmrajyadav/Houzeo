@@ -187,6 +187,7 @@ img
   var map ;
   var geocoder;
 var markerBounds = [];  
+var country;
 
 $(document).ready(function () {
 
@@ -227,18 +228,27 @@ function getCityLocation(dataAddress) {
 
           geocoder = new google.maps.Geocoder();
           
-          
+         
           geocoder.geocode( { 'address': dataAddress}, function(results, status) {
-            
-            
-                     
+                                          
+                     var result_length = results[0].address_components.length;
+                          for(var i = 0;i<result_length ; i++)
+                          {
+                            if (results[0].address_components[i].types[0] == "country") 
+                               {
+                                  country = results[0].address_components[i].long_name;
+
+                               }
+                          }
+
+                        
+
                 if (status == google.maps.GeocoderStatus.OK) {
                   var marker = new google.maps.Marker({
                       map: map,
                       position: results[0].geometry.location
                 });
                 }
-                
                 
                 var myLatLng = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());                      
                     addressesBounds(0, 0, myLatLng); 
@@ -326,10 +336,12 @@ function getCityLocation(dataAddress) {
                 var state = $('#state').val();
                 var zip = $('#zip').val();
                 var property_type = $('input[name="optradio"]:checked').val();
+                var County_by_GA = country;
+               
                 $.ajax({
                               type:'post',
                               url: "{{ url('userData')}}",
-                              data:{address:address,city:city,state:state,zip:zip,property_type:property_type}, 
+                              data:{address:address,city:city,state:state,zip:zip,property_type:property_type,County_by_GA:County_by_GA}, 
                               success: function(result){
                                          
                                 var jsonData = JSON.parse(result);
