@@ -64,7 +64,7 @@ img
       <div class="col-sm-4" >
             <div class="form-group">
                <input type="text" class="form-control"  name="address" id="address" placeholder="Address" required>
-                      <table name="addressUpdate" id="addressUpdate" class="addressUpdate">
+                      <table name="addressUpdate" id="addressUpdate" class="addressUpdate" >
 
                       </table>
             </div>

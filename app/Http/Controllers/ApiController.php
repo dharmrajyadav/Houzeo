@@ -13,7 +13,8 @@ class ApiController extends Controller
         public function getData(Request $request)
         {       
             $prefixData =  $request->addressData;
-            $service_url = env('SERVICE_URL').$prefixData;
+           
+            $service_url = env('SERVICE_URL').urlencode($prefixData);
            $curl = curl_init($service_url);
            curl_setopt($curl, CURLOPT_HTTPHEADER, array("ovio-api-key: key"));
            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
